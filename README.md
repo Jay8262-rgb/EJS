@@ -1,2 +1,2 @@
 # EJS
-EJS storage
+EJS file storage
