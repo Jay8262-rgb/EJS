@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="box">
+        <h1>Todo list</h1>
+    </div>
+    <div class="box">
+        <% for(var i = 0; i < ejs.length; i++ ){ %>
+            <div class="item">
+                <input type="checkbox">
+                <p> <%= ejs[i] %> </p>
+            </div>
+            
+        <% } %>
+
+        <form action="/" method="post">
+            <input type="text" name="ejs1" placeholder="Enter the task">
+            <button type="submit">+</button> 
+
+        </form>
+    </div>
+    
+</body>
+</html>
