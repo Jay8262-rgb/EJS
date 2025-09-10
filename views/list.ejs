@@ -12,19 +12,31 @@
     </div>
     <div class="box">
         <% for(var i = 0; i < ejs.length; i++ ){ %>
-            <div class="item">
+            <div class="item" >
                 <input type="checkbox">
                 <p> <%= ejs[i] %> </p>
-            </div>
-            
+            </div>  
         <% } %>
 
-        <form action="/" method="post">
-            <input type="text" name="ejs1" placeholder="Enter the task">
-            <button type="submit">+</button> 
+        <form action="/" method="POST">
+            <input type="text" id="plus0" name="ejs1" placeholder="Enter the task">
+            <select name="priority" class="priority-select">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <button id="plus" type="submit">+</button> 
+
 
         </form>
+        <!-- <form action="/delete" method="POST" style="display:inline;">
+         <input type="hidden" name="id" value= <%= "ejs[i].id"%> >
+         <button type="submit" class="delete-btn">Delete</button>
+        </form> -->
     </div>
+    <footer style="background:#333; color:white; text-align:center; padding:10px; margin-top:20px;">
+    <p>&copy; <%= new Date().getFullYear() %> Todo List App | All Rights Reserved</p>
+</footer>
     
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -5,7 +6,7 @@ var app = express();
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({extended:true }));
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 var items = [];
 var example = "working";
@@ -21,10 +22,17 @@ app.post("/",function(req,res){
     res.redirect('/');
 });
 
+// app.post("/delete", (req, res) => {
+//     const id = parseInt(req.body.id);
+//     tasks = tasks.filter(t => t.id !== id);
+//     error = "";
+//     res.redirect("/");
+// });
+
 
 
 app.listen(4000,function(){
     console.log("server is started");
 });
 
-//find error
+ 
