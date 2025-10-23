@@ -1,41 +1,81 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo list</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- <link rel="stylesheet" href="/css/newstyle.css"> -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("mainBox");
+        const inputBox = document.getElementById("inputbox");
+
+        if (form) {
+        form.addEventListener("submit", function (e) {
+        if (inputBox.value === "") {
+        alert("Please Enter the value");
+        e.preventDefault(); // Stop form submission
+        }
+      });
+    }
+  });
+
+    </script> 
 </head>
 <body>
     <div class="box">
         <h1>Todo list</h1>
-    </div>
+       
+    </div>    
     <div class="box">
         <% for(var i = 0; i < ejs.length; i++ ){ %>
             <div class="item" >
                 <input type="checkbox">
-                <p> <%= ejs[i] %> </p>
+                    <p> <%= ejs[i].item %>  <span class="priority"><%= ejs[i].priority %></span> </p>
+              <form action="/edit/<%= i %>" method="GET" id="edit">
+                <button class="edit" name="edit"><ion-icon name="create-outline">ion-icon></button>
+              </form>
+              <form action="/delete/<%= i %>" method="POST">
+                <button class="Del"><ion-icon name="trash-outline"></ion-icon></button>
+              </form>
             </div>  
         <% } %>
 
-        <form action="/" method="POST">
-            <input type="text" id="plus0" name="ejs1" placeholder="Enter the task">
-            <select name="priority" class="priority-select">
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
-            </select>
-            <button id="plus" type="submit">+</button> 
-
-
+        <% if (showUpdate) { %>
+        <form action="/update/<%= editIndex %>" method="POST" id="update">
+        <input type="text" name="newValue" id="inputbox" value="<%= editValue.item %>">
+        <select name="priority" class="priority-select">
+            <option name="Low" value="Low">Low</option>
+            <option name="Medium" value="Medium">Medium</option>
+            <option name="High" value="High">High</option>
+            <option name= "NA" value="NA">NA</option> 
+        </select>
+        <button type="submit" id="updateButton">Update</button>
+        <button type="button" name="cancelButton" id="cancelButton" onclick="window.location.href='/'" >Cancel</button>
+        
         </form>
-        <!-- <form action="/delete" method="POST" style="display:inline;">
-         <input type="hidden" name="id" value= <%= "ejs[i].id"%> >
-         <button type="submit" class="delete-btn">Delete</button>
-        </form> -->
+        <% } else { %>
+        
+        <form action="/" method="POST" id="mainBox">
+        <input type="text" id="inputbox"  name="ejs1" placeholder="Enter the task">
+        <select name="priority" class="priority-select">
+            <option name="Low" value="Low">Low</option>
+            <option name="Medium" value="Medium">Medium</option>
+            <option name="High" value="High">High</option>
+            <option name= "NA" value="NA">NA</option> 
+        </select>
+        <button id="plus" type="submit">+</button> 
+     </form>
+     <% } %>
+
+        
     </div>
     <footer style="background:#333; color:white; text-align:center; padding:10px; margin-top:20px;">
-    <p>&copy; <%= new Date().getFullYear() %> Todo List App | All Rights Reserved</p>
+    <p>&copy;  Todo List App | All Rights Reserved</p>
 </footer>
     
 </body>
