@@ -35,7 +35,20 @@
         <% for(var i = 0; i < ejs.length; i++ ){ %>
             <div class="item" >
                 <input type="checkbox">
-                    <p> <%= ejs[i].item %>  <span class="priority"><%= ejs[i].priority %></span> </p>
+                    <p> <span class="style" style= "color: <%= ejs[i].color %>;
+
+                     font-weight: <%= ejs[i].font === 'bold' ? 'bold' : 'normal'  %>;
+                      font-style: <%= ejs[i].font  === 'italic' ? 'italic' : 'normal' %> ;
+                      text-decoration: <%= ejs[i].font === 'underline' ? 'underline' : 'normal' %> ; 
+                      text-transform:<%= ejs[i].font === 'uppercase' ? 'uppercase' 
+                                    : ejs[i].font === 'lowercase' ? 'lowercase' 
+                                    : ejs[i].font === 'capitalize' ? 'capitalize' : 'none' %>;
+                                     
+; 
+                      
+                       background-color: <%= ejs[i].highlight %> ">
+
+                      <%= ejs[i].item %></span>   <span class="priority"><%= ejs[i].priority %></span> </p>
               <form action="/edit/<%= i %>" method="GET" id="edit">
                 <button class="edit" name="edit"><ion-icon name="create-outline">ion-icon></button>
               </form>
@@ -47,15 +60,45 @@
 
         <% if (showUpdate) { %>
         <form action="/update/<%= editIndex %>" method="POST" id="update">
-        <input type="text" name="newValue" id="inputbox" value="<%= editValue.item %>">
-        <select name="priority" class="priority-select">
+          <div class="style-priority-container">
+          <p class="pri">Color:<select name="color" class="priority-select"> 
+            <option class="prio" name= "None" > None </option> 
+            <option class="prio" name="Red" > Red </option>
+            <option class="prio" name="blue" > blue </option>
+            <option class="prio" name="Green" > Green </option>
+            <option class="prio" name= "yellow" > yellow </option> 
+        </select></p>
+        <p class="pri">Font:<select name="font" class="priority-select"> 
+            <option class="prio" name="bold" > bold </option>
+            <option class="prio" name="italic" > italic </option>
+            <option class="prio" name="lowercase" > lowercase </option>
+            <option class="prio" name="uppercase" > uppercase </option>
+            <option class="prio" name="underline" > underline </option>
+            <option class="prio" name="capitalize" > capitalize </option>
+            <option class="prio" name= "normal" > normal </option> 
+        </select></p>
+        <p class="pri">Highlight-Color:<select name="highlight" class="priority-select"> 
+          <option class="prio" name= "None" > None </option> 
+            <option class="prio" name="red" > red </option>
+            <option class="prio" name="blue" > blue </option>
+            <option class="prio" name="Green" > green </option>
+            <option class="prio" name= "Yellow" > yellow  </option> 
+        </select></p>
+        </div>
+        <div class="input-field">
+        <input type="text" name="newValue"  class="input-priority" value="<%= editValue.item %>">
+        <p class="input-priority">priority:<select name="priority" class="priority-select"> 
             <option name="Low" value="Low">Low</option>
             <option name="Medium" value="Medium">Medium</option>
             <option name="High" value="High">High</option>
             <option name= "NA" value="NA">NA</option> 
-        </select>
+        </select></p>
+        </div>
+        
+        <div class="send-portion">
         <button type="submit" id="updateButton">Update</button>
         <button type="button" name="cancelButton" id="cancelButton" onclick="window.location.href='/'" >Cancel</button>
+        </div>
         
         </form>
         <% } else { %>

@@ -17,13 +17,18 @@ body{
     
 }
 
+#mainBox{
+    background-color: rgb(174, 165, 165);
+    /* text-transform: inherit; */
+}
+
 .box{
     text-align: center;
     width: 450px;
     border-radius: 0.1%;
     box-shadow: 12px 12px 2px 1px rgb(0 0 255 / 0.2);
     padding: 0.1rem;
-    background-color:#e1ebf8;
+    background-color:#8f9091;
 }
 
 .item{
@@ -40,7 +45,50 @@ body{
     justify-content: center;
     align-items: center;
     width: 300vh;
-    text-transform: uppercase;
+    
+}
+
+.style-priority-container{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: large;
+    margin-top: 10px;
+}
+
+/* .style{
+    background-color:;
+} */
+
+.input-field{
+    display: flex;
+    margin: 3px;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+
+    
+}
+
+.send-portion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#update{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(174, 165, 165);
+    justify-content: center;
+    align-items: center;
+    height: 8rem;
+    width: 100%;
+    padding: 5px;
+    
 }
 
 .priority{
@@ -54,6 +102,11 @@ body{
 .priority-select{
     font-size: 10px;
     width: 40px;
+    height: 20px;
+    margin-top: 2px;
+    color: rgb(226, 141, 43);
+    background-color: rgb(48, 61, 25);
+    border-radius: 2px;
 }
 .item input{
     margin-left: 0.2rem;
@@ -79,6 +132,7 @@ input:checked+p{
 
 .edit{
     margin: 0.5rem;
+    background-color: burlywood;
 
 }
 
@@ -86,9 +140,19 @@ input:checked+p{
     height: 35px;
     width: 60px;
     border-radius: 5%;
+    background-color: burlywood;
+}
+#plus{
+    background-color: brown;
 }
 .Del{
     margin: 0.5rem;
+    background-color: burlywood;
+
+}
+
+#cancelButton{
+    background-color: burlywood;
 }
 
 form input{
@@ -131,7 +195,7 @@ footer{
     }
     .box{
         width: 400px;
-
+        
     }
     .item p{
         font-size: medium;
@@ -162,6 +226,14 @@ footer{
     .box{
         width: 300px;
     }
+
+    #update{
+    height: 150px;
+   }
+
+   .style{
+    font-size: large;
+   }
 }
 
 

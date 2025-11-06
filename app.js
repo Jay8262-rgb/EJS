@@ -20,7 +20,7 @@ app.post("/", function(req, res) {
         items.push({item, priority});
     } else {
         console.log("Enter a valid input value");
-        // return res.status(400).send("<h1>Plz insert valid data</h1>");
+        return res.status(400).send("<h1>Plz insert valid data</h1>");
     }
     res.redirect("/");  
 });
@@ -35,13 +35,15 @@ app.post("/update/:id", function(req, res) {
   const id = req.params.id;
   const newValue = req.body.newValue.trim();
   const priority = req.body.priority;
-
+  const color = req.body.color || "black";
+  const font = req.body.font || "normal";
+  const highlight = req.body.highlight || "transparent";
   if (newValue.length > 0) {
     
-    items[id] = {item : newValue , priority};
+    items[id] = {item : newValue , priority , color, font, highlight};
   }else{
     console.log("enter the input value");
-    // return res.status(400).send("<h1>Plz enter a value");
+    return res.status(400).send("<h1>Plz enter a value");
   }
   res.redirect("/");
 });
